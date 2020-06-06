@@ -1,0 +1,39 @@
+<div class="col-md-6 mx-auto">
+  <div class="card">
+    <h5 class="card-header info-color white-text text-center py-4">
+      <strong><%= render partial: "heading_title", locals: {title: form_title}%></strong>
+    </h5>
+    <%= form_for(member, html: {class: "border border-light p-5 text-center"}) do |form| %>
+      <% if member.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(member.errors.count, "error") %> prohibited this member from being saved:</h2>
+          <ul>
+          <% member.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+          </ul>
+        </div>
+      <% end %>
+      <div class="field">
+        <%= form.text_field :name, class: "form-control mb-4", placeholder: "Name", required: true %>
+      </div>
+      <div class="field">
+        <%= form.text_field :website_url, class: "form-control mb-4", placeholder: "Website URL", required: true %>
+      </div>
+      <% if action_name.eql?("edit")%>
+        <div class="field">
+          <%= form.label 'Manage Friends' %>
+          <%= form.select :friend_ids, options_for_select(member.all_member_expect_self.collect {|s| [s.name, s.id]}, selected: @friends), {}, id: "friend_ids", :multiple => true  %>
+        </div>
+      <%end%>
+      <div class="actions">
+        <%= form.submit "Save", class: "btn btn-info my-4 btn-block" %>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+
+ <script type="text/javascript">
+  $( "#friend_ids" ).select2({theme: "bootstrap"});
+</script>

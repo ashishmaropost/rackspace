@@ -1,0 +1,66 @@
+<div class="row">
+  <div class="col-md-8 mx-auto">
+    <%= form_tag member_path(id: @member.id), method: "get" do %>
+      <%= text_field_tag :search,params[:search], class: "form-control", placeholder: "Experts directory search by topic" %>
+    <%end%>
+  </div>
+</div>
+<hr>
+<h4 class="font-weight-bold">Member Details</h4>
+<hr>
+<div class="row">
+    <div class="col-md-4">
+      <strong>Name: </strong>
+      <%= @member.name %>
+    </div>
+     <div class="col-md-4">
+      <strong>Website: </strong>
+      <a href="<%= @member.website_url %>"><%= @member.website_url %></a>
+    </div>
+     <div class="col-md-4">
+      <strong>Shortening:</strong>
+      <a href="<%= @member.shortening %>"><%= @member.shortening %></a>
+    </div>
+</div>
+<hr>
+<% if @members.present? %>
+  <div class="row">
+    <div class="col-md-12">
+      <h4 class="font-weight-bold"></h4>
+      <% @members.each do |member| %>
+        <div class="row">
+          <div class="col-md-3"><%= member.name %></div> 
+          <div class="col-md-3">
+            <a href="/members/<%= member.id %>">View Profile</a>
+          </div>
+          <div class="col-md-6">
+            <p><%= member.description %></p></div>  
+        </div>
+      <%end%>
+    </div>
+  </div>
+<%else%>
+  <div class="row">
+    <div class="col-md-6">
+      <h4 class="font-weight-bold">Heading Content</h4>
+      <% @member.website_headings.each do |heading| %>
+        <%= "<#{heading["node"]}>".html_safe %>
+          <%= heading["value"] %>
+        <%= "</#{heading["node"]}>".html_safe %>
+      <%end%>
+    </div>
+    <div class="col-md-6">
+      <h4 class="font-weight-bold">Friends</h4>
+      <% @member.friends_list.each do |friend| %>
+        <div class="row">
+          <div class="col-md-6"><%= friend.name %></div> 
+          <div class="col-md-6">
+            <a href="/members/<%= friend.id %>">View Profile</a>
+          </div> 
+        </div>
+      <%end%>
+    </div>
+  </div>
+<%end%>
+
+

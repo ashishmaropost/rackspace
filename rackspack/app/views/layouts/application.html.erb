@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Rackspack</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= render 'shared/stylesheet' %>
+  </head>
+  <body>
+    <%= render 'shared/navbar' %>
+    <main class="mt-5 pt-5 mb-5">
+      <div class="container">
+        <%= render partial: "shared/flash_message" %>
+        <%= yield %>
+      </div>
+    </main>
+  </body>
+  <%= render 'shared/script' %>
+</html>

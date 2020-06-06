@@ -1,0 +1,19 @@
+<div class="col-md-6 mx-auto">
+<div class="card">
+  <h5 class="card-header info-color white-text text-center py-4">
+    <strong>LOGIN</strong>
+  </h5>
+  <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: {class: "border border-light p-5 text-center"}) do |f| %>
+  
+  <div class="field">
+    <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control mb-4", placeholder: "Email" %>
+  </div>
+  <div class="field">
+    <%= f.password_field :password, autocomplete: "current-password", class: "form-control mb-4", placeholder: "password"  %>
+  </div>
+  <div class="actions">
+    <%= f.submit "Log in", class: "btn btn-info my-4 btn-block" %>
+  </div>
+  <% end %>
+  </div>
+</div>

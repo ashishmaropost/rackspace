@@ -1,0 +1,33 @@
+<header>
+   <nav class="navbar fixed-top navbar-expand-md navbar-light white double-nav scrolling-navbar top-nav-collapse" style="padding-left: unset;">
+      <!-- SideNav slide-out button -->
+      <!-- Navbar links-->
+      <div class="mr-auto pl-2">
+         <span class="d-none d-md-inline-block">
+           <h3 class="font-weight-bold logo"><a href="/">Expert Directory</a></h3>
+         </span>
+      </div>
+      <!--Navigation icons-->
+      <span id="dpl-navbar-right-buttons">
+         <!--Navigation icons-->
+         <ul class="nav navbar-nav nav-flex-icons ml-auto">
+            <% if user_signed_in? %>
+               <li class="nav-item d-none d-xl-inline-block" alt="Support" id="navbar-static-support">
+                  <a href="/members/new" class="nav-link waves-effect">
+                     <i class="fa fa-user"></i><span class="d-none d-xl-inline-block ml-1">Add Member</span>
+                  </a>
+               </li>
+               <li class="nav-item d-none d-xl-inline-block" alt="Support" id="navbar-static-support">
+                  <a href="/members" class="nav-link waves-effect">
+                     <i class="fa fa-users"></i><span class="d-none d-xl-inline-block ml-1">Member Lists</span>
+                  </a>
+               </li>
+               <a href="<%= destroy_user_session_path %>" id="navbar-static-login" class="btn btn-info btn-rounded btn-sm" data-method="delete">Logout</a>
+            <%else%>
+               <a href="/users/sign_in" id="navbar-static-login" class="btn btn-info btn-rounded btn-sm waves-effect" >Login</a>
+            <%end%>
+         </ul>
+      </span>
+   </nav>
+   <!-- /.Navbar-->
+</header>

@@ -1,0 +1,23 @@
+<p id="notice"><%= notice %></p>
+<h2 class="text-center font-weight-bold">All Members </h2>
+<table class="table">
+  <thead class="grey lighten-2">
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Short URL</th>
+      <th scope="col">No. of Friends</th>
+      <th scope="col">Manage</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @members.each do |member| %>
+      <tr>
+        <td><%= member.name.humanize %></td>
+        <td><a href="<%= member.shortening %>"><%= member.shortening %></a></td>
+         <td><%= member.friends_list.count %></td>
+        <td><%= link_to 'Show', member, class: "btn btn-danger text-white btn_list" %>
+          <%= link_to 'Edit', edit_member_path(member), class: "btn btn-primary text-white btn_list" %>
+        </td>
+    <% end %>
+  </tbody>
+</table>

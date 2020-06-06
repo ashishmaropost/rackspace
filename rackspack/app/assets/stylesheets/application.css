@@ -1,0 +1,17 @@
+/*
+ *= require bootstrap.min
+ *= require mdb.min
+ *= require font-awesome.min
+ *= require bootstrap-select.min
+ *= require select2
+ *= require select2-bootstrap
+ *= require typeahead
+ *= require flash_message
+ *= require style
+ *= require_tree .
+ *= require_self
+ */
+
+ .select2 {
+   width: 100% !important
+ }
